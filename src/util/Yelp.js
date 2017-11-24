@@ -29,7 +29,7 @@ const Yelp = {
       return response.json();
     }).then(jsonResponse => {
       if (jsonResponse.businesses) {
-        return jsonResponse.businesses.map(business => (
+        return jsonResponse.businesses.map(business => ({
           id: business.id,
           imageSrc: business.image_url,
           name: business.name,
@@ -40,7 +40,7 @@ const Yelp = {
           rating: business.rating,
           reviewCount: business.review_count
 
-        ));
+        }));
       }
     });
   }
