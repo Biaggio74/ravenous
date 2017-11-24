@@ -11,7 +11,7 @@ let accessToken = '';
 // Step 26 chain the then() to the first return statement, I understood to the very first return, so Yelp.getAccessToken
 //Step 30, ...business.map(...=> () ) usese () for function instead of {}
 
-export const Yelp = {
+const Yelp = {
   getAccessToken() {
     if (accessToken !== '') {
       return new Promise(resolve => resolve(accessToken));
@@ -32,17 +32,18 @@ export const Yelp = {
         return jsonResponse.businesses.map(business => (
           id: business.id,
           imageSrc: business.image_url,
-          name: businesses.name,
-          address: businesses.location.address1,
-          city: businesses.location.city,
-          state: businesses.location.state,
-          zipCode: businesses.location.zip_code,
-          //category: businesses.categories.map(cat => {cat.alias, cat.title}),
-          rating: businesses.rating,
-          reviewCount: businesses.review_count
+          name: business.name,
+          address: business.location.address1,
+          city: business.location.city,
+          state: business.location.state,
+          zipCode: business.location.zip_code,
+          rating: business.rating,
+          reviewCount: business.review_count
 
         ));
       }
     });
   }
 }
+
+export default Yelp;
